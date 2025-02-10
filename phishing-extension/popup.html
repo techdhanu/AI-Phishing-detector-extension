@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        #urlDisplay {
+            font-size: 12px;
+            word-break: break-all;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .status.loading {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status.safe {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status.phishing {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .status.error {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Safety Checker</h1>
+    <p id="urlDisplay">Checking: Loading...</p>
+    <p id="statusMessage" class="status loading">Checking website safety...</p>
+    <script src="popup.js"></script>
+</body>
+</html>
