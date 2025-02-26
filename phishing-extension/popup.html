@@ -6,57 +6,86 @@
     <title>Phishing Detection</title>
     <style>
         body {
-            width: 300px;
-            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
             font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        
-        h1 {
-            font-size: 18px;
-            margin-bottom: 15px;
+
+        body.light {
+            background-color: #ffffff;
             color: #333;
         }
-        
-        #urlDisplay {
-            font-size: 12px;
-            word-break: break-all;
-            margin-bottom: 10px;
-            color: #666;
+
+        body.dark {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
         }
-        
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: inherit;
+        }
+
+        .iconDisplay {
+            font-size: 4rem;
+            margin-right: 70px;
+        }
+
         .status {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-size: 14px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
             font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .status.loading {
-            background-color: #e3f2fd;
-            color: #1976d2;
-        }
-        
+
         .status.safe {
-            background-color: #e8f5e9;
             color: #2e7d32;
         }
-        
+
         .status.phishing {
-            background-color: #ffebee;
             color: #c62828;
         }
-        
+
         .status.error {
-            background-color: #fff3e0;
             color: #ef6c00;
+        }
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-top: 3px solid #333;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Website Safety Checker</h1>
-    <p id="urlDisplay">Checking: Loading...</p>
-    <p id="statusMessage" class="status loading">Checking website safety...</p>
+    <div class="container">
+        <div id="iconDisplay" class="iconDisplay">❓</div>
+        <div id="statusMessage" class="status">Checking...</div>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>
