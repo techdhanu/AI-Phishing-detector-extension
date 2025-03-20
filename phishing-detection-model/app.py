@@ -14,13 +14,13 @@ CORS(app)
 def predict_phishing(url):
     try:
         print("\nAnalyzing URL:", url)
-        
+
         # Vectorize the URL
         url_vectorized = vectorizer.transform([url])
-        
+
         # Get feature names for debugging
         feature_names = vectorizer.get_feature_names_out()
-        
+
         # Print detected features
         nonzero_features = url_vectorized.nonzero()[1]
         print("\nURL features detected:")
@@ -30,7 +30,7 @@ def predict_phishing(url):
         # Get prediction and probabilities
         nb_prediction = naive_bayes_model.predict(url_vectorized)[0]
         nb_proba = naive_bayes_model.predict_proba(url_vectorized)[0]
-        
+
         # Convert prediction to boolean
         # For string predictions (e.g., 'phishing' or 'legitimate')
         if isinstance(nb_prediction, (str, np.str_)):
@@ -38,11 +38,11 @@ def predict_phishing(url):
         # For numeric predictions (e.g., 0 or 1)
         else:
             is_phishing = bool(int(nb_prediction))
-        
+
         # Get confidence scores
         legitimate_confidence = float(nb_proba[0])
         phishing_confidence = float(nb_proba[1])
-        
+
         print("\nModel Predictions:")
         print(f"Naive Bayes prediction: {'phishing' if is_phishing else 'legitimate'}")
         print(f"Confidence scores - Legitimate: {legitimate_confidence:.3f}, Phishing: {phishing_confidence:.3f}")
@@ -75,7 +75,7 @@ def check_url():
             }), 400
 
         result = predict_phishing(url)
-        
+
         if 'error' in result:
             return jsonify({
                 "status": "error",
